@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Material</mat-label>
+        <input type="text"
+               matInput
+               formControlName="material"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayWith">
+            <mat-option *ngFor="let material of materials" [value]="material">
+                {{ material.name }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Agregar</button>
+    </div>
+</form>
